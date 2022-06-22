@@ -8,6 +8,8 @@ object MyRegEx {
     internal const val FIRST_NAME_CAPITAL = "^[A-Z][a-z]*(?: [a-zA-Z]*)*\$"
     internal const val FIRST_NAME_SIZE = "^[A-Z][a-z]{2,}(?: [a-zA-Z]*)*\$"
     internal const val FULL_NAME = "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*)+\$"
+    
+    internal const val FULL_NAME_MAX5 = "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*){0,4}$"
 }
 
 fun MyRegEx.checkFullNameValidation(fName:String):String? {
@@ -34,7 +36,8 @@ fun MyRegEx.checkFullNameValidation(fName:String):String? {
         !Pattern.matches(FIRST_NAME_SIZE, fName)
         -> "First Name should be minimum 3 letters."
 
-        !Pattern.matches(FULL_NAME, fName)
+//         !Pattern.matches(FULL_NAME, fName)
+        !Pattern.matches(FULL_NAME_MAX5, fName)
         -> "Full Name must be like eg. ' First Middle Last '"
 
         else -> null
